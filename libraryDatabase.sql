@@ -313,8 +313,8 @@ WHERE
 	A2.BranchName = @branchName AND BOOKS.Title = @bookTitle
 ;
 
-[dbo].[getBookCountEachBranch] 'Sharpstown', 'The Lost Tribe';
-[dbo].[getBookCountEachBranch] 'Central', 'The Lost Tribe';
+EXEC getBookCountEachBranch 'Sharpstown', 'The Lost Tribe';
+EXEC getBookCountEachBranch 'Central', 'The Lost Tribe';
 		-------- 1 --------
 
 		-------- 2 --------
@@ -329,7 +329,7 @@ FROM
 WHERE
 	BOOKS.Title = 'The Lost Tribe'
 ;
-[dbo].[getBookCountForTheLostTribe]
+EXEC getBookCountForTheLostTribe
 		-------- 2 --------
 
 		-------- 3 --------
@@ -345,7 +345,7 @@ WHERE NOT EXISTS(
 	WHERE A2.CardNo = A1.CardNo
 );
 
-[dbo].[getNamesWithoutCheckOut]
+EXEC getNamesWithoutCheckOut
 		-------- 3 --------
 
 		-------- 4 --------
@@ -363,7 +363,7 @@ WHERE
 	BOOK_LOANS.DateDue = CONVERT(DATE, GETDATE()) AND LIBRARY_BRANCH.BranchName = @branchN
 ;
 
-[dbo].[getDueToday] 'Sharpstown'
+EXEC getDueToday 'Sharpstown'
 		-------- 4 --------
 
 		-------- 5 --------
@@ -379,7 +379,7 @@ GROUP BY
 	A2.BranchName
 ;
 
-[dbo].[totalBooksOut]
+EXEC totalBooksOut
 		-------- 5 --------
 
 		-------- 6 --------
@@ -396,7 +396,7 @@ HAVING
 	COUNT(A1.CardNo ) > 5
 ;
 
-[dbo].[getPersonWithMoreThan5Books]
+EXEC getPersonWithMoreThan5Books
 		-------- 6 --------
 
 		-------- 7 --------
@@ -413,5 +413,5 @@ WHERE
 	A4.AuthorName = 'Stephen King' AND A3.BranchName = 'Central'
 ;
 
-[dbo].[getStephenKing]
+EXEC getStephenKing
 		-------- 7 --------
